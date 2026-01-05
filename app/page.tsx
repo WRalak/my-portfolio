@@ -34,14 +34,11 @@ export default function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Generate stable particle positions that won't cause hydration mismatch
   const particlePositions = useMemo(() => {
-    // Fixed seed for deterministic random values
     const seed = 12345;
     const particles = [];
     
     for (let i = 0; i < 50; i++) {
-      // Simple pseudo-random function for deterministic values
       const seededRandom = (index: number) => {
         const x = Math.sin(index + seed) * 10000;
         return x - Math.floor(x);
@@ -87,6 +84,7 @@ export default function Portfolio() {
     {
       title: 'Freelance Software & AI Engineer',
       company: 'Self-Employed',
+      companyUrl: null,
       location: 'Remote',
       period: '2026 - Present',
       highlights: [
@@ -100,6 +98,7 @@ export default function Portfolio() {
     {
       title: 'AI Engineering Intern',
       company: 'Valhko',
+      companyUrl: 'https://valhko.com',
       location: 'London, UK (Remote)',
       period: 'Oct 2025 – Dec 2025',
       highlights: [
@@ -112,6 +111,7 @@ export default function Portfolio() {
     {
       title: 'Python Django Intern',
       company: 'Digital Nexus AI',
+      companyUrl: 'https://digitalnexusai.com',
       location: 'Bangalore, India (Remote)',
       period: 'Oct 2025 – Dec 2025',
       highlights: [
@@ -124,6 +124,7 @@ export default function Portfolio() {
     {
       title: 'Mobile App Developer and QA',
       company: 'Gracify Technologies',
+      companyUrl: 'https://gracifytechnologies.com',
       location: 'Yaoundé, Cameroon (Remote)',
       period: 'Jun 2025 – Oct 2025',
       highlights: [
@@ -136,6 +137,7 @@ export default function Portfolio() {
     {
       title: 'Software Development Understudy',
       company: 'Kontorva',
+      companyUrl: 'https://platform.kontorva.com/',
       location: 'Tallinn, Estonia (Remote)',
       period: 'Aug 2024 – Feb 2025',
       highlights: [
@@ -149,51 +151,62 @@ export default function Portfolio() {
 
   const projects = [
     {
+      name: 'Kontorva Platform',
+      subtitle: 'Recruitment SaaS Platform',
+      description: 'Enhanced SaaS platform connecting recruiters with developers worldwide using modern React frontend and Laravel backend with MySQL database.',
+      tech: ['React', 'Laravel', 'MySQL', 'SaaS', 'API Development'],
+      year: '2024-2025',
+      gradient: 'from-indigo-600 to-purple-600',
+      links: [
+        { type: 'live', url: 'https://platform.kontorva.com/', label: 'Live Platform' }
+      ]
+    },
+    {
       name: 'HAYA',
       subtitle: 'Travel SaaS Platform',
-      description: 'Full-stack SaaS platform for tour operators and travel agencies featuring AI-powered itinerary generation, streamlining operations and enhancing customer experience.',
+      description: 'Full-stack SaaS platform for tour operators and travel agencies featuring AI-powered itinerary generation.',
       tech: ['Next.js', 'TypeScript', 'Supabase', 'AI Integration'],
       year: '2025',
       gradient: 'from-blue-600 to-cyan-600',
       links: [
-        { type: 'live', url: 'https://haya-travel.vercel.app', label: 'Live Demo' },
-        { type: 'github', url: 'https://github.com/WRalak/haya-travel', label: 'GitHub' }
+        { type: 'live', url: 'https://www.usehaya.com/', label: 'Live Platform' },
+      
       ]
     },
     {
       name: 'Tukai',
       subtitle: 'Events Discovery Platform',
-      description: 'Mobile application connecting users to nearby concerts, festivals, and experiences with real-time listings and location-based discovery.',
+      description: 'Mobile application connecting users to nearby concerts, festivals, and experiences with real-time listings.',
       tech: ['React Native', 'API Integration', 'Location Services', 'Real-time Data'],
       year: '2025',
       gradient: 'from-purple-600 to-pink-600',
       links: [
-        { type: 'github', url: 'https://github.com/WRalak/tukai-events', label: 'GitHub' },
-        { type: 'demo', url: 'https://tukai-demo.vercel.app', label: 'Web Demo' }
+        { type: 'live', url: 'https://www.tukai.co/', label: 'Live Platform' },
+       
       ]
     },
     {
       name: 'Solgates Fashion',
       subtitle: 'E-commerce Platform',
-      description: 'Complete rebuild of fashion e-commerce platform using Remix framework with enhanced performance, modern UI/UX, and improved responsiveness.',
+      description: 'Complete rebuild of fashion e-commerce platform using Remix framework with enhanced performance.',
       tech: ['Remix', 'React', 'Modern Web Stack', 'UI/UX Design'],
       year: '2025',
       gradient: 'from-orange-600 to-red-600',
       links: [
-        { type: 'live', url: 'https://solgates-fashion.vercel.app', label: 'Live Site' },
-        { type: 'github', url: 'https://github.com/WRalak/solgates-fashion', label: 'GitHub' }
+        { type: 'live', url: 'https://solgates.com/', label: 'Live Site' },
+     
       ]
     },
     {
       name: 'MyLook',
       subtitle: 'African Fashion Marketplace',
-      description: 'Mobile platform enabling users to browse and purchase traditional African dresses with cloud-based infrastructure and optimized user experience.',
+      description: 'Mobile platform enabling users to browse and purchase traditional African dresses.',
       tech: ['React Native', 'Cloud Infrastructure', 'Mobile Optimization'],
       year: '2025',
       gradient: 'from-green-600 to-emerald-600',
       links: [
         { type: 'demo', url: 'https://mylook-app.netlify.app', label: 'Web Demo' },
-        { type: 'github', url: 'https://github.com/WRalak/mylook-fashion', label: 'GitHub' }
+        { type: 'github', url: 'https://github.com/WRalak/mylook-fashion', label: '' }
       ]
     }
   ];
@@ -205,20 +218,17 @@ export default function Portfolio() {
     { icon: <Users className="w-8 h-8" />, value: 'Global', label: 'Team Collaboration' }
   ];
 
-  // Social media links
   const socialLinks = [
     { icon: <Github size={24} />, url: 'https://github.com/WRalak', label: 'GitHub', color: 'hover:text-cyan-400' },
-    { icon: <Linkedin size={24} />, url: 'https://linkedin.com/in/wallace-ralak', label: 'LinkedIn', color: 'hover:text-blue-400' },
-    { icon: <Twitter size={24} />, url: 'https://twitter.com/wallace_ralak', label: 'Twitter', color: 'hover:text-sky-400' },
-    { icon: <Dribbble size={24} />, url: 'https://dribbble.com/wallace-ralak', label: 'Dribbble', color: 'hover:text-pink-400' },
-    { icon: <Figma size={24} />, url: 'https://figma.com/@wallacer', label: 'Figma', color: 'hover:text-purple-400' },
-    { icon: <Instagram size={24} />, url: 'https://instagram.com/wallace.ralak', label: 'Instagram', color: 'hover:text-rose-400' },
+    { icon: <Linkedin size={24} />, url: 'https://www.linkedin.com/in/wallace-ralak-bb66482b9/', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: <Twitter size={24} />, url: 'https://x.com/home', label: 'Twitter', color: 'hover:text-sky-400' },
+    { icon: <Dribbble size={24} />, url: 'https://dribbble.com/', label: 'Dribbble', color: 'hover:text-pink-400' },
+    { icon: <Figma size={24} />, url: 'https://www.figma.com/Wallace_Ralak', label: 'Figma', color: 'hover:text-purple-400' },
+    { icon: <Instagram size={24} />, url: 'https://instagram.com/wallaceralak', label: 'Instagram', color: 'hover:text-rose-400' },
   ];
 
-  // Function to handle CV download
   const handleDownloadCV = () => {
-    // Replace with your actual CV file path
-    const cvUrl = '/wallace-ralak-cv.pdf'; // Update this with your actual CV file path
+    const cvUrl = '/wallace-ralak-cv.pdf';
     const link = document.createElement('a');
     link.href = cvUrl;
     link.download = 'Wallace_Ralak_CV.pdf';
@@ -236,7 +246,6 @@ export default function Portfolio() {
     }
   };
 
-  // Function to render project links
   const renderProjectLinks = (links: Array<{type: string, url: string, label: string}>) => {
     return (
       <div className="flex flex-wrap gap-2 mt-4">
@@ -259,6 +268,24 @@ export default function Portfolio() {
           </a>
         ))}
       </div>
+    );
+  };
+
+  const renderCompanyLink = (company: string, url: string | null) => {
+    if (!url) {
+      return <span className="text-xl text-cyan-400">{company}</span>;
+    }
+    
+    return (
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 text-xl text-cyan-400 hover:text-cyan-300 transition-colors group"
+      >
+        {company}
+        <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
+      </a>
     );
   };
 
@@ -324,7 +351,6 @@ export default function Portfolio() {
       <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-purple-500/10"></div>
         <div className="absolute inset-0">
-          {/* Render particles only on client to avoid hydration mismatch */}
           {isClient && particlePositions.map((particle, i) => (
             <div
               key={i}
@@ -346,13 +372,11 @@ export default function Portfolio() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000"></div>
               <div className="relative w-40 h-40 rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center border-4 border-slate-950 overflow-hidden">
-                {/* Profile Image Placeholder - Replace with your image */}
                 <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-white">
                   WR
                 </div>
-                {/* If you have an image, use this instead: */}
                  <Image 
-                  src="/profile.jpeg" // Replace with your image path
+                  src="/profile.jpeg"
                   alt="Wallace Ralak"
                   fill
                   className="object-cover"
@@ -374,7 +398,7 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
             Building the future of technology in Africa and beyond through scalable software, 
             AI innovation, and reliable engineering practices
           </p>
@@ -409,13 +433,13 @@ export default function Portfolio() {
                 aria-label={social.label}
               >
                 {social.icon}
-                <span>{social.label}</span>
+                <span className="text-sm">{social.label}</span>
               </a>
             ))}
             <a href="mailto:wallaceralak@gmail.com"
                className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors">
               <Mail size={24} />
-              <span>Email</span>
+              <span className="text-sm">Email</span>
             </a>
           </div>
 
@@ -437,7 +461,7 @@ export default function Portfolio() {
                 <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
                   {stat.value}
                 </div>
-                <div className="text-slate-400">{stat.label}</div>
+                <div className="text-slate-400 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -453,18 +477,18 @@ export default function Portfolio() {
             </span>
           </h3>
           <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-xl">
-            <p className="text-xl text-slate-300 leading-relaxed mb-6">
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
               I&apos;m a DevOps and Software Engineer with hands-on experience in full-stack development, 
               AI engineering, and cloud infrastructure. My passion lies in creating practical, high-impact 
               software that merges AI innovation with reliable engineering practices.
             </p>
-            <p className="text-xl text-slate-300 leading-relaxed mb-6">
+            <p className="text-lg text-slate-300 leading-relaxed mb-6">
               With a proven track record of building and deploying AI-driven applications and automation 
               systems using modern frameworks and scalable architectures, I specialize in CI/CD automation, 
               Docker, AWS, and Terraform, alongside strong foundations in machine learning model integration 
               and intelligent agents.
             </p>
-            <p className="text-xl text-slate-300 leading-relaxed">
+            <p className="text-lg text-slate-300 leading-relaxed">
               I&apos;m committed to driving the future of technology in Africa and beyond by delivering solutions 
               that are not only innovative but also reliable, scalable, and built to last.
             </p>
@@ -473,15 +497,15 @@ export default function Portfolio() {
               <div className="flex flex-wrap gap-6">
                 <div className="flex items-center gap-2 text-slate-300">
                   <MapPin size={20} className="text-cyan-400" />
-                  <span>Mombasa, Kenya</span>
+                  <span className="text-sm">Mombasa, Kenya</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Mail size={20} className="text-cyan-400" />
-                  <span>wallaceralak@gmail.com</span>
+                  <span className="text-sm">wallaceralak@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Phone size={20} className="text-cyan-400" />
-                  <span>+254718600199</span>
+                  <span className="text-sm">+254718600199</span>
                 </div>
               </div>
             </div>
@@ -506,8 +530,10 @@ export default function Portfolio() {
                   <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-6">
                     <div>
                       <h4 className="text-2xl md:text-3xl font-bold text-white mb-2">{job.title}</h4>
-                      <p className="text-xl text-cyan-400 mb-1">{job.company}</p>
-                      <p className="text-slate-400">{job.location}</p>
+                      <div className="mb-1">
+                        {renderCompanyLink(job.company, job.companyUrl)}
+                      </div>
+                      <p className="text-slate-400 text-sm">{job.location}</p>
                     </div>
                     <div className="mt-4 md:mt-0 px-4 py-2 bg-slate-800 rounded-full text-slate-300 text-sm whitespace-nowrap">
                       {job.period}
@@ -515,7 +541,7 @@ export default function Portfolio() {
                   </div>
                   <ul className="space-y-3">
                     {job.highlights.map((highlight, i) => (
-                      <li key={i} className="text-slate-300 flex items-start text-lg">
+                      <li key={i} className="text-slate-300 flex items-start text-base">
                         <span className="text-cyan-400 mr-3 mt-1 flex-shrink-0">▹</span>
                         <span>{highlight}</span>
                       </li>
@@ -536,7 +562,7 @@ export default function Portfolio() {
               Featured Projects
             </span>
           </h3>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <a
                 key={index}
@@ -550,19 +576,19 @@ export default function Portfolio() {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h4 className="text-2xl font-bold text-white mb-1">{project.name}</h4>
-                      <p className="text-cyan-400">{project.subtitle}</p>
+                      <p className="text-cyan-400 text-sm">{project.subtitle}</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 bg-slate-800 rounded-full text-sm text-slate-300">
+                      <span className="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300">
                         {project.year}
                       </span>
                       <ExternalLink size={16} className="text-slate-400 group-hover:text-cyan-400 transition-colors" />
                     </div>
                   </div>
-                  <p className="text-slate-300 mb-6 leading-relaxed">{project.description}</p>
+                  <p className="text-slate-300 text-base mb-6 leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, i) => (
-                      <span key={i} className="px-4 py-2 bg-slate-950 rounded-full text-sm text-slate-300 border border-slate-700">
+                      <span key={i} className="px-3 py-1 bg-slate-950 rounded-full text-xs text-slate-300 border border-slate-700">
                         {tech}
                       </span>
                     ))}
@@ -595,7 +621,7 @@ export default function Portfolio() {
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {data.items.map((skill, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-slate-950 rounded-lg text-sm text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-400 transition-colors">
+                    <span key={i} className="px-3 py-1.5 bg-slate-950 rounded-lg text-xs text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-400 transition-colors">
                       {skill}
                     </span>
                   ))}
@@ -615,7 +641,7 @@ export default function Portfolio() {
               Let&apos;s Build Something Great
             </span>
           </h3>
-          <p className="text-xl text-slate-300 mb-12 leading-relaxed">
+          <p className="text-lg text-slate-300 mb-12 leading-relaxed">
             I&apos;m currently open to new opportunities, collaborations, and exciting projects. 
             Whether you have an idea you want to bring to life or just want to connect, I&apos;d love to hear from you.
           </p>
@@ -658,10 +684,10 @@ export default function Portfolio() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <p className="text-slate-400">
+              <p className="text-slate-400 text-sm">
                 © 2026 Wallace Ralak. All rights reserved.
               </p>
-              <p className="text-slate-500 mt-1 text-sm">
+              <p className="text-slate-500 mt-1 text-xs">
                 Crafted with passion in Mombasa, Kenya 🇰🇪
               </p>
             </div>
