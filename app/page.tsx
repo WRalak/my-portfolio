@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
   Github, Linkedin, Mail, Phone, MapPin, Code, Database, Cloud, Menu, X, ArrowDown, 
-  Briefcase, Users, Rocket, Dribbble, Download, ExternalLink, Globe, Twitter, Instagram, 
+  Briefcase, Users, Rocket, Dribbble, ExternalLink, Globe, Twitter, Instagram, 
   Figma, Terminal, Server, Brain, Smartphone, Shield, Palette, Layers, Zap,
   Dock, FastForward, Database as DatabaseIcon, FileJson,
   Sparkles, Flame, Gitlab, Codepen,
@@ -277,7 +277,6 @@ export default function Portfolio() {
       gradient: 'from-blue-600 to-cyan-600',
       links: [
         { type: 'live', url: 'https://www.usehaya.com/', label: 'Live Platform' },
-      
       ]
     },
     {
@@ -289,7 +288,6 @@ export default function Portfolio() {
       gradient: 'from-purple-600 to-pink-600',
       links: [
         { type: 'live', url: 'https://www.tukai.co/', label: 'Live Platform' },
-       
       ]
     },
     {
@@ -301,7 +299,6 @@ export default function Portfolio() {
       gradient: 'from-orange-600 to-red-600',
       links: [
         { type: 'live', url: 'https://solgates.com/', label: 'Live Site' },
-     
       ]
     },
     {
@@ -333,10 +330,6 @@ export default function Portfolio() {
     { icon: <Figma size={24} />, url: 'https://www.figma.com/Wallace_Ralak', label: 'Figma', color: 'hover:text-[#B4E50D]' },
     { icon: <Instagram size={24} />, url: 'https://instagram.com/wallaceralak', label: 'Instagram', color: 'hover:text-[#B4E50D]' },
   ];
-
-  const handleDownloadCV = () => {
-    window.open('https://docs.google.com/document/d/15FB8hknpItQel9JI3PI6MywTd_IKuuCcHvgvfAszrMw/edit?usp=drive_link', '_blank');
-  };
 
   const scrollToSection = (section: string) => {
     setActiveSection(section);
@@ -506,12 +499,6 @@ export default function Portfolio() {
                   onClick={() => scrollToSection('projects')}
                   className="px-8 py-4 border-2 border-[#B4E50D] rounded-full font-semibold hover:bg-[#B4E50D]/10 transition-all duration-300">
                   View My Work
-                </button>
-                <button 
-                  onClick={handleDownloadCV}
-                  className="group px-8 py-4 border-2 border-gray-900 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2">
-                  <Download size={20} />
-                  Download CV
                 </button>
               </div>
 
@@ -843,12 +830,6 @@ export default function Portfolio() {
                 <Mail size={24} />
                 Get In Touch
               </a>
-              <button 
-                onClick={handleDownloadCV}
-                className="inline-flex items-center gap-3 px-10 py-5 border-2 border-gray-900 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105">
-                <Download size={24} />
-                Download CV
-              </button>
             </div>
             
             <div className="flex justify-center gap-6 pt-6">
