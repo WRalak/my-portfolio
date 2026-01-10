@@ -669,7 +669,7 @@ export default function Portfolio() {
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h4 className="text-2xl font-bold text-gray-900 mb-1">{project.name}</h4>
-                      <p className="text-[#B4E50D] text-sm">{project.subtitle}</p>
+                      <p className="text-gray-900 font-semibold text-sm">{project.subtitle}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="px-3 py-1 bg-gray-100 rounded-full text-xs text-gray-700">
