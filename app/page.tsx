@@ -390,7 +390,7 @@ export default function Portfolio() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 text-xl text-[#B4E50D] hover:text-[#9dc70c] transition-colors group"
+        className="inline-flex items-center gap-1 text-xl text-gray-900 font-semibold group"
       >
         {company}
         <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity ml-1" />
